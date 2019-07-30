@@ -2,9 +2,9 @@
   <div class="home">
     <div>vue long list</div>
 
-    <List :list="list">
+    <List :list="list" :height="800" :itemHeight="40">
       <template v-slot:default="{ item }">
-        <div>
+        <div class="list-item">
           <div>{{ item.id }}</div>
           <div>{{ item.title }}</div>
         </div>
@@ -21,32 +21,18 @@ export default {
 
   data() {
     return {
-      list: [
-        {
-          id: 1,
-          title: "hello1",
-        },
-        {
-          id: 2,
-          title: "hello2",
-        },
-        {
-          id: 3,
-          title: "hello3",
-        },
-        {
-          id: 4,
-          title: "hello4",
-        },
-        {
-          id: 5,
-          title: "hello5",
-        },
-        {
-          id: 6,
-          title: "hello6",
-        },
-      ],
+      list: [],
+    }
+  },
+
+  created() {
+    const num = 10000
+
+    for(let i = 0; i < num; i++) {
+      this.list.push({
+        id: i,
+        title: "message" + i,
+      })
     }
   },
 
@@ -55,3 +41,10 @@ export default {
   },
 }
 </script>
+
+<style lang="stylus">
+.list-item
+  border: 1px solid red
+  box-sizing: border-box
+  height: 40px
+</style>
