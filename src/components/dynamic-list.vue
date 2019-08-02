@@ -7,7 +7,7 @@
     </template>
   </div>
 
-  <div style="visiblility: hidden" ref="testList">
+  <div :style="{ visibility: 'hidden' }" ref="testList">
     <template v-for="(item, index) in testHeightList">
       <slot v-bind:item="item" :ref="'test-' + index"></slot>
     </template>
