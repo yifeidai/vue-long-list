@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <div>hello</div>
+    <router-link to="/">list</router-link>
+    <router-link to="/dynamic">dynamic link</router-link>
     <router-view/>
   </div>
 </template>
@@ -11,6 +12,9 @@
   -moz-osx-font-smoothing grayscale
   text-align center
   color #2c3e50
+
+  > a
+    margin: 0 20px
 
 #nav
   padding 30px

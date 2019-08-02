@@ -2,12 +2,9 @@
 <div class="list" :style="{ height: height + 'px' }" @scroll="onScroll" ref="list">
   <div class="scroll-trigger" :style="{ height: scrollHeight + 'px' }"></div>
   <div :style="{transform: `translate3D(0, ${offset}px, 0)`}" class="render-wrap">
-    <div
-      v-for="item in renderList"
-      class="render-list"
-    >
+    <template v-for="item in renderList">
       <slot v-bind:item="item"></slot>
-    </div>
+    </template>
   </div>
 </div>
 </template>
@@ -31,12 +28,6 @@ export default {
     itemHeight: {
       type: Number,
       requited: true,
-    },
-  },
-
-  watch: {
-    list() {
-      this.renderList = this.list
     },
   },
 
@@ -69,7 +60,7 @@ export default {
       let scrollTop = this.$refs.list.scrollTop
       if(Math.abs(scrollTop - this.lastScrollTop) >= this.itemHeight) {
         this.lastScrollTop = scrollTop
-        f.call(this)
+        f()
       }
     },
 
